@@ -1,1 +1,66 @@
-﻿
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.left {
+    flex: 35%;
+    padding: 15px 0;
+    padding-left: 12px;
+}
+
+    .left h2 {
+        padding-left: 8px;
+    }
+
+.right {
+    flex: 65%;
+    padding: 15px;
+}
+
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-left: none;
+    height: 300px;
+}
+
+#searchtext {
+    width: 50%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #ddd;
+}
+
+#searchbtn {
+    width: 20%;
+    font-size: 18px;
+    padding: 11px;
+    border: 2px thick #808080;
+}
+
+#books {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+    #books li a {
+        padding: 12px;
+        text-decoration: none;
+        color: black;
+        display: block
+    }
+
+        #books li a:hover {
+            background-color: #7b62fd;
+        }
