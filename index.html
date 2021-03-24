@@ -1,9 +1,97 @@
 <html>
 <head>
-    <link rel="stylesheet" href="css/library.css" />
-    <script src="js/app.js" type="module"></script>
+    <link rel="stylesheet" href="./css/library.css" />
+    <script src="js/app.js" type="module">
+    </script>
 </head>
 <body>
-<!-- Add your own html content here, and keep JS content in JS files -->
+    <!-- Add your own html content here, and keep JS content in JS files -->
+    <div class="row">
+
+        <div class="left">
+            <h2>List of Books</h2>
+            <ul id="books" />
+            <div class="container">
+            </div>
+        </div>
+        <div class="right">
+            <h3>Search words in books: </h3>
+            <input type="text" id="searchtext" title="Type in a word" placeholder="Search..." required minlength="3" />
+            <input type="button" id="searchbtn" value="Search" onclick="runSearch();" />
+            <div class="tabcontent">
+                <h3>Word Counts : <span id="bookspan"></span></h3>
+                <table id="book_list"></table>
+                <label id="err_msg" style="color:crimson"></label>
+            </div>
+        </div>
+        <input type="hidden" id="bookId" name="bookname" value="1">
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+        var uri = '/api/books';
+        $(document).ready(function () {
+
+            //$.getJSON(uri)
+            //    .done(function (data) {
+            //        //console.log(data);
+            //        $.each(data, function (key, item) {
+            //            console.log(item);
+            //            $('<li>', { text: formatBook(item) }).appendTo($('#books'));
+            //        });
+            //    });
+        });
+
+        //function formatBook(item) {
+        //    return item.BookName;
+        //}
+
+        function formatWord(item) {
+            return '<tr><td>' + item.Word + '</td><td> : ' + item.Count + '</td></tr>';
+        }
+        // function to search the entered word
+        function runSearch()
+        {
+            var query = $('#searchtext').val();
+            if (query.length < 3) {
+                $('#book_list').empty();
+                $('#err_msg').text('Please enter minimum 3 char to search...');
+                return false;
+            }
+            else {
+                Id = document.getElementById("bookId").value;
+                var searchUri = uri + '/' + Id + '?query=' + query;
+                Search(searchUri);
+                return true;
+            }
+        }
+        //get top 10 common words per book
+        function getWordCount(Id, bookName) {
+            if (Id) {
+                document.getElementById("bookId").value = Id;
+                document.getElementById("bookspan").innerText = bookName;
+            }
+
+            var searchUri = uri + '/' + Id;
+            Search(searchUri)
+        }
+
+        function Search(searchUri) {
+            $.getJSON(searchUri)
+                .done(function (data) {
+                    $('#book_list').empty();
+                    $('#err_msg').empty();
+                    var table_data = '';
+                    $.each(data, function (key, item) {
+                        table_data += formatWord(item);
+                    });
+                    $('#book_list').append(table_data);
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#book_list').empty();
+                    $('#err_msg').text('API Error: ' + err);
+                });
+        }
+    </script>
+
 </body>
 </html>
