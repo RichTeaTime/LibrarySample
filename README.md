@@ -9,7 +9,7 @@ This uses .NET/WebAPI and ES6, and provides a skeleton for candidates to fill in
 
 To assist us in understanding the technical experience of candidates, we ask that you *fill in the blanks* of the simple WebAPI and ES6 project that accompanies this document. This will involve creating the architecture and implementation of both Frontend and Backend projects.
 
-The WebAPI project uses .NET Framework and C# and iisexpress to minimise dependencies on your software environment. The UI code is written using ES6, to avoid the need to compile Typescript.
+The WebAPI project uses .NET Framework and C# and iisexpress to minimise dependencies on your software environment. The UI code is written using ES6, to avoid the need to compile Typescript. **Candidates should try to avoid adding any additional dependencies**
 
 Please do not add any further external dependencies to your solution.
 
@@ -31,9 +31,10 @@ Please do not add any further external dependencies to your solution.
 
     * The logic encapsulated by these calls should be supported and verified by at least one unit test.
 
-**NOTE:** Candidates should prioritise good architecture, then performance over memory. Where possible, data should be ‘lazy loaded’ once, then retained for future requests.
+**_NOTE:_ Candidates should prioritise good architecture, then performance over memory. Where possible, data should be ‘lazy loaded’ once, then retained for future requests.**
 
-  
+**_NOTE:_ For this task, candidates can assume that the list of books - and the contents of each book - will not change for the duration of the user session.**
+
 
 ### The UI calls the WebAPI API detailed above:
 1. To retrieve the book titles, these are displayed to the user as HTML DOM elements added to the document tree.
