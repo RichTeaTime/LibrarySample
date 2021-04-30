@@ -21,7 +21,7 @@ Please do not add any further external dependencies to your solution.
  
     * The words are returned as a list of strings, from “GET /api/books/{id}”.
 
-    * A word is defined as a sequence of non-whitespace, non-punctuation, non-special characters, we discard words shorter than 5 letters.
+    * A word is defined as a sequence of non-whitespace, non-punctuation, non-special characters, we don't include words shorter than 5 letters in the top-10.
 
     * Case-matching is insensitive, and the top 10 words should be returned in Capital Case (e.g. “Word”)
 
