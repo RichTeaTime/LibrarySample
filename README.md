@@ -9,7 +9,7 @@ This uses .NET/WebAPI and ES6, and provides a skeleton for candidates to fill in
 
 To assist us in understanding the technical experience of candidates, we ask that you *fill in the blanks* of the simple WebAPI and ES6 project that accompanies this document. This will involve creating the architecture and implementation of both Frontend and Backend projects.
 
-The WebAPI project uses .NET Framework and C# and iisexpress to minimise dependencies on your software environment. The UI code is written using ES6, to avoid the need to compile Typescript. **Candidates should try to avoid adding any additional dependencies**
+The WebAPI project uses .NET Core and C# to minimise dependencies on your software environment. The UI code is written using ES6, to avoid the need to compile Typescript. **Candidates should try to avoid adding any additional dependencies**
 
 Please do not add any further external dependencies to your solution.
 
@@ -25,7 +25,7 @@ Please do not add any further external dependencies to your solution.
 
     * Case-matching is insensitive, and the top 10 words should be returned in Capital Case (e.g. “Word”)
 
-3. The caller should then be able to send a string (min 3 characters), and receive back a list of all words which begin with that string from the specified book, e.g. “GET /api/books/1?query=Wha”.
+3. The caller should then be able to send a string (min 3 characters), and receive back a list of all words which begin with that string from the specified book, e.g. “GET /api/books/1/search/Wha”.
 
     * Case-matching is insensitive.
 
