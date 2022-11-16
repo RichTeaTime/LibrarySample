@@ -1,31 +1,47 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using System.Web.Http;
+﻿using Library.Models;
+using Library.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Controllers
 {
-    [RoutePrefix("api/books")]
-    public class BooksController : ApiController
+    /*
+    * 
+        BE – Simple command line app that reads in a text file, counts the number of words and returns the most common ten.
+
+        UI – Very simple HTML app which shows how to retrieve some data and display it on the page. 
+        i.e. a HTML page including a <script> tag which loads a JS ‘app’ file via ES6 type=”module”.
+                        
+    */
+    [ApiController]
+    [Route("api/[controller]")]
+    public class BooksController : ControllerBase
     {
-        /*
-		The following GET methods are expected on the api/books controller:
+        private static readonly BookRepository repository = new BookRepository();
 
-			1. GET api/books
-				Returns a list of Ids & Titles for all the books in the Resources folder
-				Titles should be the name of the filename, minus the extension.
-				The Id should be unique.
+        [HttpGet]
+        public IEnumerable<Book> Get()
+        {
+            // Return the list of book ids and titles
+            throw new NotImplementedException();
+        }
 
-			2. GET api/books/{Id}
-				Returns a list of the most common 10 words (min 5 letters) and how many times they occur in the specified book.
-				When parsing, whitespace, linefeeds and punctiation should be ignored, and words matched case-insensitively (e.g. "the" and "The" and "THE" will be returned as "The"=3)
-				Words should be returned in capital case (e.g. Word), and the list should be sorted in decreasing incidence.
+        [HttpGet("{id:int}")]
+        public IActionResult GetTopWords(int id)
+        {
+            // Return a list of the 10 most common words (>3 letters) 
+            throw new NotImplementedException();
+        }
 
-			3. GET api/books/{Id}?query={query}
-				Returns a list of all words which start with the specified string (min 3 letters) and the number of times they occur within the specified book.
-				Case matching should be insensitive.
+        [HttpGet("{id:int}/count/{word}")]
+        public IActionResult WordCount(int id, string word)
+        {
+            throw new NotImplementedException();
+        }
 
-		The logic for these calls should largely be encapsulated in other classes. This should make it easier to Unit Test those classes
-		to validate the expected behaviour.
-		*/
+        [HttpGet("{id:int}/search/{query}")]
+        public IActionResult SearchForWord(int id, string query)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
